@@ -41,7 +41,7 @@
                             <label>Name Doktor</label>
                             <input type="text" class="form-control @error('doctor_name')
                                 is-invalid
-                            @enderror" name="doctor_name">
+                            @enderror" name="doctor_name" value="{{ $doctor->doctor_name }}">
                             @error('doctor_name')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -61,6 +61,8 @@
                             <label for="doctor_specialist">Doktor Specialist</label>
                             <select name="doctor_specialist" id="doctor_specialist" class="form-control @error('doctor_specialist') is-invalid @enderror">
                                 <option value="">-- Pilih Spesialis --</option>
+                                @if (isset($doctor)) <option value="$doctor-> doctor_specialist" selected>{{$doctor->doctor_specialist}}</option>
+                                @endif
                                 @foreach ($specialists as $specialist => $specialistName)
                                 <option value="{{ $specialist }}" {{ old('doctor_specialist') === $specialist ? 'selected' : '' }}>{{ $specialistName }}</option>
                                 @endforeach
@@ -75,7 +77,7 @@
                             <label>Email</label>
                             <input type="email" class="form-control @error('doctor_email')
                                 is-invalid
-                            @enderror" name="doctor_email">
+                            @enderror" name="doctor_email" value="{{ $doctor->doctor_email }}">
                             @error('doctor_email')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -86,13 +88,13 @@
                         
                         <div class="form-group">
                             <label>Phone</label>
-                            <input type="number" class="form-control" name="doctor_phone">
+                            <input type="number" class="form-control" name="doctor_phone" value="{{ $doctor->doctor_phone }}">
                         </div>
                         <div class="form-group">
                             <label>SIP</label>
                             <input type="number" class="form-control @error('sip')
                                 is-invalid
-                            @enderror" name="sip">
+                            @enderror" name="sip" value="{{ $doctor->sip }}">
                             @error('sip')
                             <div class="invalid-feedback">
                                 {{ $message }}

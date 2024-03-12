@@ -73,6 +73,7 @@ class DoctorController extends Controller
         $doctor-> doctor_email = $request-> doctor_email;
         $doctor-> sip = $request-> sip;
         $doctor-> save();
+        
         return redirect()->route('doctors.index')->with('success', 'Doctor update successfully');
     }
     public function destroy($id)
